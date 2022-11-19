@@ -5,7 +5,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Deploy
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
@@ -20,9 +20,7 @@ jobs:
           npm install
           npm run build
 
-      - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          dir: .
-          branch: main
-          token: ${{ secrets.ACCESS_TOKEN }}
+          folder: build
